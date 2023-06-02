@@ -1,0 +1,7 @@
+let space = ' '
+let firstName = 'Alfitka'
+let lastName = 'Haerul'
+let country = 'Indonesia'
+let city = 'Banjar'
+let language = 'JavaScript'
+let job = 'Programmer'
