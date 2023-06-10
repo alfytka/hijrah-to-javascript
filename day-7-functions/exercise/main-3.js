@@ -211,4 +211,87 @@
 
    console.log(modifyArray(['Avocado', 'Tomato', 'Potato', 'Mango', 'Lemon', 'Carrot']))
    console.log(modifyArray(['Google', 'Facebook','Apple', 'Amazon','Microsoft',  'IBM']))
+
+   const isPrime = (...prime) => {
+      if (prime < 2) {
+         return false
+      }
+
+      for (let i = 2; i <= Math.sqrt(prime); i++) {
+         if (prime % i === 0) {
+            return false
+         }
+      }
+
+      return true
+   }
+
+   console.log(isPrime(6))
+
+   const isUnique = (array) => {
+      let uniqueSet = new Set()
+      for (const item of array) {
+         if (uniqueSet.has(item)) {
+            return false
+         }
+
+         uniqueSet.add(item)
+      }
+      return true
+   }
+
+   console.log(isUnique([1, 2, 3, 4, 5]))
+   console.log(isUnique([1, 2, 3, 1, 5]))
+
+   const isTypeOfSame = (array) => {
+      const firstType = typeof array[0]
+      for (let i = 1; i < array.length; i++) {
+         if (typeof array[i] !== firstType) {
+            return false
+         }
+      }
+      return true
+   }
+
+   console.log(isTypeOfSame([1, 2, 3, 4, 5]))
+   console.log(isTypeOfSame(['banana', 'apple', 'lemon']))
+   console.log(isTypeOfSame([true, false, true]))
+   console.log(isTypeOfSame([1, '1', true]))
+
+   const isValidVariable = (variable) => {
+      if (typeof variable === 'string' && /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(variable)) {
+         return true
+      }
+      return false
+   }
+
+   console.log(isValidVariable('myVariable'));      // true
+   console.log(isValidVariable('anotherVariable$')); // true
+   console.log(isValidVariable('_privateVar'));     // true
+   console.log(isValidVariable('123Variable'));     // false (starts with a number)
+   console.log(isValidVariable('invalid-var'));     // false (contains a dash)
+   console.log(isValidVariable(''));                // false (empty string)
+   console.log(isValidVariable(123)); 
+
+   const sevenRandNum = () => {
+      let newArr = []
+      while (newArr.length < 7) {
+         let randNum = Math.floor(Math.random() * 10)
+         if (!newArr.includes(randNum)) {
+            newArr.push(randNum)
+         }
+      }
+      return newArr
+   }
+
+   console.log(sevenRandNum())
+
+   const reverseCountries = (countries) => {
+      const copy = [...countries]
+      const reversed = copy.reverse()
+      return reversed
+   }
+
+   const countries = ['Indonesia', 'Thailand', 'Philipines', 'Singapore', 'Vietnam', 'Malaysia', 'Myanmar', 'Cambodia', 'Laos', 'Brunei Darussalam']
+   console.log(reverseCountries(countries))
 }
