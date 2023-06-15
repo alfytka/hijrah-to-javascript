@@ -2097,4 +2097,156 @@
    
    const sortByPopulation = countries.slice().sort((a, b) => b.population - a.population)
    console.log(sortByPopulation)
+
+   const mostSpokenLanguages = (countries, count) => {
+      const languages = {}
+
+      countries.forEach((country) => {
+         country.languages.forEach((language) => {
+            if (languages[language]) {
+               languages[language]++
+            } else {
+               languages[language] = 1
+            }
+         })
+      })
+
+      const sortedLanguages = Object.entries(languages).sort((a, b) => b[1] - a[1])
+      const topLanguages = sortedLanguages.slice(0, count).map(([language, count]) => ({
+         language,
+         count
+      }))
+      return topLanguages
+   }
+
+   console.log(mostSpokenLanguages(countries, 10))
+   console.log(mostSpokenLanguages(countries, 3))
+
+   const mostPopulatedCountries = (countries, count) => {
+      const sortedPopulations = countries.sort((a, b) => b.population - a.population)
+      const topPopulations = sortedPopulations.slice(0, count).map(({country, population}) => ({
+         country,
+         population
+      }))
+      return topPopulations
+   }
+
+   console.log(mostPopulatedCountries(countries, 10))
+
+   const statistics = {
+      data: [],
+
+      addData(data) {
+         this.data = this.data.concat(data)
+      },
+
+      count() {
+         return this.data.length
+      },
+
+      sum() {
+         return this.data.reduce((acc, val) => acc + val, 0)
+      },
+
+      min() {
+         return Math.min(...this.data)
+      },
+
+      max() {
+         return Math.max(...this.data)
+      },
+
+      range() {
+         return this.max() - this.min()
+      },
+
+      mean() {
+         const sum = this.sum()
+         const count = this.count()
+         return sum / count
+      },
+
+      median() {
+         const sortedData = this.data.sort((a, b) => a - b)
+         const count = this.count()
+
+         if (count % 2 === 0) {
+            const midIndex = count / 2
+            return (sortedData[midIndex - 1] + sortedData[midIndex] / 2)
+         } else {
+            const midIndex = Math.floor(count / 2)
+            return sortedData[midIndex]
+         }
+      },
+
+      mode() {
+         const counts = {}
+         this.data.forEach((num) => {
+            if (counts[num]) {
+               counts[num]++
+            } else {
+               counts[num] = 1
+            }
+         })
+
+         let maxCount = 0
+         let mode = null
+         for (const num in counts) {
+            if (counts[num] > maxCount) {
+               maxCount = counts[num]
+               mode = parseInt(num)
+            }
+         }
+         return { mode, count: maxCount }
+      },
+
+      var() {
+         const mean = this.mean()
+         const squaredDiffs = this.data.map((num) => Math.pow(num - mean, 2))
+         const variance = squaredDiffs.reduce((acc, val) => acc + val, 0) / this.count()
+         return variance
+      },
+
+      std() {
+         return Math.sqrt(this.var())
+      },
+
+      freqDist() {
+         const counts = {}
+         this.data.forEach((num) => {
+            if (counts[num]) {
+               counts[num]++
+            } else {
+               counts[num] = 1
+            }
+         })
+
+         const freqDist = []
+         for (const num in counts) {
+            freqDist.push([parseFloat(num), counts[num]])
+         }
+         freqDist.sort((a, b) => b[1] - a[1])
+
+         return freqDist
+      }
+   }
+   
+   const ages = [
+      31, 26, 34, 37, 27, 26, 32, 32, 26, 27,
+      27, 24, 32, 33, 27, 25, 26, 38, 37, 31,
+      34, 24, 33, 29, 26
+   ]
+   statistics.addData(ages)
+
+   console.log('Count:', statistics.count()); // 25
+   console.log('Sum: ', statistics.sum()); // 744
+   console.log('Min: ', statistics.min()); // 24
+   console.log('Max: ', statistics.max()); // 38
+   console.log('Range: ', statistics.range()); // 14
+   console.log('Mean: ', statistics.mean()); // 29.76
+   console.log('Median: ', statistics.median()); // 29
+   console.log('Mode: ', statistics.mode()); // { mode: 26, count: 5 }
+   console.log('Variance: ', statistics.var()); // 17.
+
+
 }
