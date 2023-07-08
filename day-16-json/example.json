@@ -1,0 +1,22 @@
+{
+   "users": [
+      {
+         "firstName": "Alfitka",
+         "lastName": "Haerul",
+         "age": 18,
+         "email": "alfitka@gmail.com"
+      },
+      {
+         "firstName": "Agung",
+         "lastName": "Fahmi",
+         "age": 19,
+         "email": "agung@gmail.com"
+      },
+      {
+         "firstName": "Elfan",
+         "lastName": "Haeri",
+         "age": 20,
+         "email": "elfan@gmail.com"
+      }
+   ]
+}
