@@ -1,0 +1,23 @@
+body {
+   display: flex;
+   justify-content: center;
+   
+}
+.wrapper {
+   font-family: 'Inter';
+   text-align: center;
+   margin-top: 5rem;
+}
+
+ul li {
+   list-style-type: none;
+   padding: 16px;
+   margin-bottom: 3px;
+   color: black;
+}
+.year {
+   font-size: 64px;
+}
+h4 {
+   padding: 5px;
+}
