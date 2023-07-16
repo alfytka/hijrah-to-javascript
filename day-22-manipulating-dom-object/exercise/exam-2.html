@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      #container {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 5px;
+         margin: 0;
+      }
+      #container .country {
+         width: 100px;
+         height: 120px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: black;
+         background: white;
+         border: 1px solid gray;
+         border-radius: 10px;
+         margin: 0;
+         padding: 5px;
+         font-family: 'Arial';
+         text-align: center;
+      }
+   </style>
+</head>
+<body>
+   
+   <div id="container">
+
+   </div>
+
+   <script>
+
+      const container = document.querySelector('#container')      
+
+      const url = 'https://restcountries.com/v2/all'
+      fetch(url)
+         .then((response) => response.json())
+         .then((data) => {
+            data.forEach((country, i) => {
+               let div = document.createElement('div')
+               div.className = 'country'
+               div.style.fontSize = '12px'
+               div.textContent = country.name.toUpperCase()
+               container.appendChild(div)
+            });
+         })
+         .catch((error) => console.error(error))
+   </script>
+
+</body>
+</html>
