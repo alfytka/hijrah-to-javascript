@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Exam for Day 22 of JavaScript</title>
+   <style>
+      #container {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 4px;
+         margin: 0;
+      }
+      #container .number {
+         width: 100px;
+         height: 50px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: white;
+         background: gray;
+         margin: 0;
+         font-family: monospace;
+      }
+   </style>
+</head>
+<body>
+   
+   <div id="container">
+
+   </div>
+
+   <script>
+      const container = document.querySelector('#container')
+
+      const isPrime = (num) => {
+         if (num <= 1) return false
+         if (num <= 3) return true
+         if (num % 2 === 0 || num % 3 === 0) return false
+
+         for (let i = 5; i * i <= num; i += 6) {
+            if (num % i === 0 || num % (i + 2) === 0) {
+               return false
+            }
+         }
+         return true
+      }
+
+      for (let i = 0; i <= 101; i++) {
+         let nums = document.createElement('h6')
+         nums.className = 'number'
+         nums.style.fontSize = '28px'
+         nums.style.padding = '5px'
+         nums.textContent = i
+
+         if (i % 2 === 0) {
+            nums.style.background = '#21BF73'
+         } else {
+            nums.style.background = '#FDDB3A'
+         }
+
+         if (isPrime(i)) {
+            nums.style.background = '#FD5E53'
+         }
+      
+         container.appendChild(nums)
+      }
+   </script>
+
+</body>
+</html>
