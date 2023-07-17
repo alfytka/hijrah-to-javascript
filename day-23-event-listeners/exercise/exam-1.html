@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Exam Level 1 of JavaScript</title>
+   <style>
+      #container {
+         display: flex;
+         flex-wrap: wrap;
+         /* justify-content: center; */
+         gap: 4px;
+         margin: 0;
+      }
+      #container .number {
+         width: 70px;
+         height: 40px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: white;
+         background: gray;
+         margin: 0;
+         font-family: monospace;
+      }
+      .generate {
+         display: flex;
+         justify-content: center;
+         gap: 20px;
+         margin: 0px 0px 20px 0px;
+      }
+      p {
+         display: flex;
+         justify-content: center;
+      }
+   </style>
+</head>
+<body>
+
+   <p></p>
+   <span></span>
+   <div class="generate">
+
+   </div>
+   <div id="container">
+
+   </div>
+
+   <script>
+
+      const container = document.querySelector('#container')
+      const generate = document.querySelector('.generate')
+      const p = document.querySelector('p')
+
+      const input = document.createElement('input')
+      const button = document.createElement('button')
+      button.textContent = 'Generate numbers'
+      button.style.background = '#21BF73'
+      button.style.color = 'white'
+      button.style.fontSize = '16px'
+      button.style.paddingTop = '7px'
+      button.style.paddingBottom = '7px'
+      button.style.border = 'none'
+      input.style.padding = '5px'
+      input.style.width = '400px'
+      input.style.borderColor = '#21BF73'
+      
+      generate.appendChild(input)
+      generate.appendChild(button)
+
+      const isPrime = (num) => {
+         if (num <= 1) return false
+         if (num <= 3) return true
+         if (num % 2 === 0 || num % 3 === 0) return false
+
+         for (let i = 5; i * i <= num; i += 6) {
+            if (num % i === 0 || num % (i + 2) === 0) {
+               return false
+            }
+         }
+         return true
+      }
+
+      const func = (jumlah) => {
+         for (let i = 0; i < jumlah; i++) {
+            let nums = document.createElement('h6')
+            nums.className = 'number'
+            nums.style.fontSize = '28px'
+            nums.style.padding = '5px'
+            nums.textContent = i
+   
+            if (i % 2 === 0) {
+               nums.style.background = '#21BF73'
+            } else {
+               nums.style.background = '#FDDB3A'
+            }
+   
+            if (isPrime(i)) {
+               nums.style.background = '#FD5E53'
+            }
+
+            container.appendChild(nums)
+         }
+      }
+
+      const contain = document.querySelector('#container')
+      button.addEventListener('click', (e) => {
+         if (input.value === '') {
+            p.textContent = 'Enter number value on the input field to generate numbers'
+            p.style.color = 'red'
+         } else if (parseInt(input.value)) {
+            p.textContent = ''
+            
+            func(parseInt(input.value))
+
+         } else {
+            p.textContent = 'Input value must be a number'
+            p.style.color = 'red'
+         }
+      })
+
+   </script>
+</body>
+</html>
