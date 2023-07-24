@@ -1,5 +1,5 @@
 let jmlAngkot = 10;
-let angkotBeroperasi = 8;
+let angkotBeroperasi = 6;
 let noAngkot = 1
 
 while (noAngkot <= angkotBeroperasi) {
