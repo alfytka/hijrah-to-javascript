@@ -1,0 +1,23 @@
+[
+   {
+      "nama": "Alfitka Haerul",
+      "nrp": "0139189202",
+      "email": "alfytka@gmail.com",
+      "jurusan": "Teknik Informatika",
+      "idDosenWali": 1
+   },
+   {
+      "nama": "Ariq Robiawan",
+      "nrp": "1842341829",
+      "email": "ariq@gmail.com",
+      "jurusan": "Teknik Industri",
+      "idDosenWali": 2
+   },
+   {
+      "nama": "Fahmi",
+      "nrp": "99280489172",
+      "email": "fahmi@gmail.com",
+      "jurusan": "Teknik Kimia",
+      "idDosenWali": 2
+   }
+]
